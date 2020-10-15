@@ -1,4 +1,4 @@
 module.exports = {
-	publicPath: "/vue-todo/",
+	publicPath: process.env.NODE_ENV === "production" ? "/my-project/" : "/",
 	productionSourceMap: false,
 };
