@@ -3,12 +3,8 @@
 		<div class="list__content">
 			<h2 class="list__empty" v-if="isEmptyTodos">Todo's is empty</h2>
 			<template v-else>
-				<div class="list__item" v-for="(todo, i) in todos" :key="i">
-					<Todo
-						:todo="todo"
-						@del-todo="$emit('del-todo', i)"
-						@is-done="$emit('is-done', i)"
-					/>
+				<div class="list__item" v-for="todo in todos" :key="todo.id">
+					<Todo :todo="todo" />
 				</div>
 			</template>
 		</div>
@@ -19,19 +15,26 @@
 import Todo from "./Todo";
 
 export default {
+	data() {
+		return {
+			todos: null,
+		};
+	},
 	components: {
 		Todo,
 	},
-	props: {
-		todos: {
-			type: Array,
-			required: true,
-		},
+
+	created() {
+		this.todos = this.$store.getters.getTodos;
 	},
 
 	computed: {
 		isEmptyTodos() {
 			return this.todos.length ? false : true;
+		},
+
+		todoList() {
+			return this.$store.state.todos;
 		},
 	},
 };

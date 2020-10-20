@@ -1,12 +1,12 @@
 <template>
-	<div @click="$emit('is-done')" :class="todo.done ? 'done' : ''">
+	<div @click="isDone" :class="todo.done ? 'done' : ''">
 		<div class="list__header">
 			<div class="list__title">
 				{{ todo.title }}
 			</div>
 
 			<img
-				@click.stop="$emit('del-todo')"
+				@click.stop="delTodo"
 				class="list__close"
 				src="../assets/img/close.svg"
 				alt="close"
@@ -27,6 +27,16 @@ export default {
 		todo: {
 			type: Object,
 			required: true,
+		},
+	},
+
+	methods: {
+		isDone() {
+			this.$store.dispatch("isDone", this.todo.id);
+		},
+
+		delTodo() {
+			this.$store.dispatch("delTodo", this.todo.id);
 		},
 	},
 };

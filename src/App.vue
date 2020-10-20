@@ -8,17 +8,8 @@
 							<h1 class="main__title">Todo App</h1>
 						</div>
 
-						<AddPanel
-							@add-todo="addTodo"
-							v-model="addInputValue"
-							:inpValue="addInputValue"
-							:error="error"
-						/>
-						<TodoList
-							:todos="todos"
-							@del-todo="delTodo"
-							@is-done="isDone"
-						/>
+						<AddPanel />
+						<TodoList />
 					</div>
 				</div>
 			</div>
@@ -37,59 +28,29 @@ export default {
 		AddPanel,
 	},
 	data() {
-		return {
-			todos: [
-				{
-					title: "FIrst",
-					date: new Date(Date.now()).toLocaleString(),
-					done: false,
-				},
-
-				{
-					title: "Second",
-					date: new Date(Date.now()).toLocaleString(),
-					done: false,
-				},
-
-				{
-					title: "Thrid",
-					date: new Date(Date.now()).toLocaleString(),
-					done: false,
-				},
-			],
-			addInputValue: "",
-			error: false,
-			newTodo: {
-				title: "",
-				date: new Date(Date.now()).toLocaleString(),
-				done: false,
-			},
-		};
+		return {};
 	},
 
 	methods: {
-		delTodo(i) {
-			this.todos = this.todos.filter((todo, index) => index != i);
-		},
-
-		isDone(i) {
-			const todo = this.todos.find((el, index) => i === index);
-			todo.done = !todo.done;
-			this.todos = this.todos.sort((a, b) => a.done - b.done);
-		},
-
-		addTodo() {
-			if (this.addInputValue.trim()) {
-				this.newTodo.title = this.addInputValue;
-				this.todos = [ {...this.newTodo}, ...this.todos ];
-				// this.todos.push(this.newTodo);
-
-				this.addInputValue = "";
-				this.error = false;
-			} else {
-				this.error = true;
-			}
-		},
+		// delTodo(i) {
+		// 	this.todos = this.todos.filter((todo, index) => index != i);
+		// },
+		// isDone(i) {
+		// 	const todo = this.todos.find((el, index) => i === index);
+		// 	todo.done = !todo.done;
+		// 	this.todos = this.todos.sort((a, b) => a.done - b.done);
+		// },
+		// addTodo() {
+		// 	if (this.addInputValue.trim()) {
+		// 		this.newTodo.title = this.addInputValue;
+		// 		this.todos = [{ ...this.newTodo }, ...this.todos];
+		// 		// this.todos.push(this.newTodo);
+		// 		this.addInputValue = "";
+		// 		this.error = false;
+		// 	} else {
+		// 		this.error = true;
+		// 	}
+		// },
 	},
 };
 </script>

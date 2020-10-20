@@ -1,32 +1,45 @@
 <template>
 	<div class="add-panel">
 		<div v-if="error" class="add-panel__error">Add title for todo</div>
-		<form class="add-panel__content" @submit.prevent="$emit('add-todo')">
+		<form class="add-panel__content" @submit.prevent="addTodo">
 			<input
 				type="text"
 				class="add-panel__input"
-				:value="inpValue"
-				@input="$emit('input', $event.target.value)"
+				v-model="setValue"
 				placeholder="Write a new todo"
 			/>
-			<button class="add-panel__btn" >
-				Add
+
+			<button class="add-panel__btn">
+				Add хелло
 			</button>
 		</form>
+		<!-- {{$store.state.todoList.addInputValue}} -->
 	</div>
 </template>
 
 <script>
 export default {
-	props: {
-		inpValue: {
-			type: String,
-			required: true,
+	data() {
+		return {};
+	},
+	computed: {
+		setValue: {
+			get() {
+				return this.$store.state.todoList.addInputValue;
+			},
+			set(value) {
+				this.$store.commit("setValue", value);
+			},
 		},
 
-		error: {
-			type: Boolean,
-			required: true,
+		error() {
+			return this.$store.state.todoList.error;
+		},
+	},
+
+	methods: {
+		addTodo() {
+			this.$store.dispatch("addTodo");
 		},
 	},
 };
