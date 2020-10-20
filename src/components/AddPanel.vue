@@ -10,10 +10,9 @@
 			/>
 
 			<button class="add-panel__btn">
-				Add хелло
+				Add
 			</button>
 		</form>
-		<!-- {{$store.state.todoList.addInputValue}} -->
 	</div>
 </template>
 

@@ -27,31 +27,6 @@ export default {
 		TodoList,
 		AddPanel,
 	},
-	data() {
-		return {};
-	},
-
-	methods: {
-		// delTodo(i) {
-		// 	this.todos = this.todos.filter((todo, index) => index != i);
-		// },
-		// isDone(i) {
-		// 	const todo = this.todos.find((el, index) => i === index);
-		// 	todo.done = !todo.done;
-		// 	this.todos = this.todos.sort((a, b) => a.done - b.done);
-		// },
-		// addTodo() {
-		// 	if (this.addInputValue.trim()) {
-		// 		this.newTodo.title = this.addInputValue;
-		// 		this.todos = [{ ...this.newTodo }, ...this.todos];
-		// 		// this.todos.push(this.newTodo);
-		// 		this.addInputValue = "";
-		// 		this.error = false;
-		// 	} else {
-		// 		this.error = true;
-		// 	}
-		// },
-	},
 };
 </script>
 
